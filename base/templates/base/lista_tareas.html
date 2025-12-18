@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="{% static 'base/styles.css' %}">
+
+  </head>
+  <body>
+    
+    <h1>Tareas V C C</h1>
+    <a href="{% url 'crear' %}">➕ Crear tarea</a>
+
+    <ul class="lista-tareas">
+      {% for tarea in tareas %}
+      <li class="l-tarea">
+  <div class="info-tarea">
+    <span class="titulo">{{ tarea.titulo }}</span>
+    <span class="estado">
+  <span class="icono">
+    {% if tarea.completa %}✔️{% else %}❌{% endif %}
+  </span>
+</span>
+
+  </div>
+
+  <div class="acciones">
+    <a class="cambio-estado" href="{% url 'toggle' tarea.id %}">Cambio Estado</a>
+    <a class="editar" href="{% url 'editar' tarea.id %}">Editar</a>
+    <a class="borrar" href="{% url 'borrar' tarea.id %}"
+       onclick="return confirm('¿Seguro que deseas borrar esta tarea?');">
+       Borrar
+    </a>
+  </div>
+</li>
+
+
+      {% endfor %}
+      
+
+    </ul>
+    
+  </body>
+</html>

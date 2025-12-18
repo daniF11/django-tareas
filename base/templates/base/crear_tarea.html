@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Tarea</title>
+    <link rel="stylesheet" href="{% static 'base/styles.css' %}">
+
+</head>
+<body>
+    
+    <h1>Nueva Tarea</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-guardar" type="submit">Guardar</button>
+    </form>
+
+    <a href="{% url 'lista' %}">← Volver</a>
+</body>
+</html>

@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 30px;
+}
+
+
+
+.titulo {
+    word-break: break-word;
+}
+
+.lista-tareas {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+}
+
+.l-tarea {
+    background: white;
+    margin: 8px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-tarea {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+a.editar, .cambio-estado {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.borrar {
+    color: #cc0000;
+}
+
+.borrar:hover {
+    text-decoration: underline;
+}
+
+
+.btn-guardar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.estado {
+    width: 40px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Bloque derecho: acciones alineadas */
+.acciones {
+    display: flex;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.icono {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 1.2em;
+}
