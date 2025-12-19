@@ -1,45 +1,39 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Lista de Tareas</title>
-    <link rel="stylesheet" href="{% static 'base/styles.css' %}">
+{% extends 'base/base.html' %}
 
-  </head>
-  <body>
-    
-    <h1>Tareas V C C</h1>
-    <a href="{% url 'crear' %}">➕ Crear tarea</a>
+{% block title %}Lista de Tareas{% endblock %}
 
-    <ul class="lista-tareas">
-      {% for tarea in tareas %}
-      <li class="l-tarea">
-  <div class="info-tarea">
-    <span class="titulo">{{ tarea.titulo }}</span>
-    <span class="estado">
-  <span class="icono">
-    {% if tarea.completa %}✔️{% else %}❌{% endif %}
-  </span>
-</span>
+{% block content %}
 
-  </div>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3">Tareas</h1>
+  <a href="{% url 'crear' %}" class="btn btn-primary">
+    ➕ Nueva tarea
+  </a>
+</div>
 
-  <div class="acciones">
-    <a class="cambio-estado" href="{% url 'toggle' tarea.id %}">Cambio Estado</a>
-    <a class="editar" href="{% url 'editar' tarea.id %}">Editar</a>
-    <a class="borrar" href="{% url 'borrar' tarea.id %}"
-       onclick="return confirm('¿Seguro que deseas borrar esta tarea?');">
-       Borrar
-    </a>
-  </div>
-</li>
+<ul class="list-group">
+  {% for tarea in tareas %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ tarea.titulo }}</strong>
+        {% if tarea.completa %}
+          <span class="badge bg-success ms-2">✔ Completa</span>
+        {% else %}
+          <span class="badge bg-secondary ms-2">Pendiente</span>
+        {% endif %}
+      </div>
 
+      <div class="btn-group btn-group-sm">
+        <a href="{% url 'toggle' tarea.id %}" class="btn btn-outline-secondary">Estado</a>
+        <a href="{% url 'editar' tarea.id %}" class="btn btn-outline-primary">Editar</a>
+        <a href="{% url 'borrar' tarea.id %}"
+           class="btn btn-outline-danger"
+           onclick="return confirm('¿Seguro que deseas borrar esta tarea?');">
+           Borrar
+        </a>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
 
-      {% endfor %}
-      
-
-    </ul>
-    
-  </body>
-</html>
+{% endblock %}
